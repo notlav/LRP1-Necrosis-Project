@@ -1,0 +1,126 @@
+apoptosis	interacts with	cellDeath
+ROS	interacts with	apoptosis
+Trxt	1	rcn34
+VEGF	1	VEGFR
+VEGFR	interacts with	Ras
+VEGFR	interacts with	PI3K
+VEGFR	1	JAK
+AP1	1	p53
+apoptosis	1	cellDeath
+xIAP	-1	cas3
+xIAP	-1	cas9
+ASK1	1	MEK36
+ASK1	1	MEK47
+xIAPt	1	rcn35
+rcn15	1	Bax
+Bad	-1	rcn18
+Bax	1	MOMP
+rcn18	1	Bcl2
+rcn20	1	Bcl2
+Bcl2	-1	Bax
+Bcl2t	1	rcn18
+Bcl2t	1	rcn20
+Bcl2t	1	rcn27
+Bcl2t	1	rcn29
+Bcl2t	1	rcn33
+rcn22	1	iCAD
+Bim	-1	rcn20
+rcn27	1	Bcl2
+CAD	1	rcn30
+rcn29	1	Bcl2
+rcn30	1	DNAfrag
+cas3	-1	PARP
+cas3	-1	rcn22
+rcn33	1	Bcl2
+cas9	1	cas3
+rcn34	1	Trx
+rcn35	1	xIAP
+rcn94	1	ASK1
+cytc	1	cas9
+DNAfrag	1	apoptosis
+EGF	1	EGFR
+EGFR	interacts with	Ras
+EGFR	interacts with	PI3K
+EGFR	1	JAK
+ERBB	interacts with	Ras
+ERBB	interacts with	PI3K
+ERBB	1	JAK
+FGF	1	FGFR
+FGFR	interacts with	PI3K
+FGFR	interacts with	Ras
+FGFR	1	JAK
+FLT3	interacts with	Ras
+FLT3	interacts with	PI3K
+FLT3	1	JAK
+FLT3L	1	FLT3
+iCAD	-1	CAD
+iCADt	1	rcn22
+IGF1	1	IGF1R
+IGF1R	interacts with	Ras
+IGF1R	interacts with	PI3K
+IGF1R	1	JAK
+JAK	1	STAT
+JNK	-1	rcn27
+JNK	1	AP1
+JNK	1	Bad
+JNK	1	Bim
+KIT	interacts with	PI3K
+KIT	interacts with	Ras
+KIT	1	JAK
+MEK36	1	p38
+MEK47	1	JNK
+MOMP	1	cytc
+MOMP	1	Smac
+NOX	1	ROS
+Noxa	-1	rcn29
+NRG1	1	ERBB
+p38	1	Bim
+p53	1	Bax
+p53	1	Noxa
+p53	1	PUMA
+PARP	-1	rcn30
+PUMA	-1	rcn33
+ROS	interacts with	ROS
+ROS	1	rcn15
+ROS	-1	rcn34
+ROS	1	rcn94
+SCF	1	KIT
+Smac	-1	rcn35
+STAT	1	Bcl2t
+Trx	-1	ASK1
+PDGFR	interacts with	LRP1endo
+LRP1endo	interacts with	LRP1endo
+rcn105	interacts with	LRP1endo
+RSK	1	CREB
+Ras	1	Raf
+Raf	1	MEK12
+PI3K	1	PDK1
+PDK1	1	Akt
+PDGFR	interacts with	PDGFR
+PDGF	1	PDGFR
+NFkB	interacts with	Bcl2t
+MEK12	1	ERK12
+IKK	-1	IkB
+IkB	-1	NFkB
+ERK12	1	RSK
+CREB	interacts with	Bcl2t
+Akt	interacts with	rcn94
+Akt	interacts with	Bim
+Akt	interacts with	Bad
+Akt	interacts with	rcn15
+Akt	1	IKK
+rcn105	interacts with	LRP1
+LRP1endo	interacts with	Shc1
+LRP1endo	interacts with	Shp2
+LRP1endo	interacts with	rcn105
+LRP1ag	interacts with	rcn105
+LRP1ag	interacts with	LRP1
+LRP1	interacts with	rcn105
+LRP1	interacts with	Src
+Src	interacts with	rcn105
+Shc1	interacts with	rcn34
+Shc1	interacts with	rcn34
+Shp2	interacts with	rcn34
+Shp2	interacts with	rcn34
+rcn34	interacts with	Ras
+rcn34	interacts with	PI3K

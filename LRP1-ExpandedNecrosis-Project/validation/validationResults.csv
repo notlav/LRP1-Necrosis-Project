@@ -1,0 +1,9 @@
+ID,Input,Input 2,Output,Control,Measurement,Prediction,Predicted Change,Match,Tag
+1,LRP1ag,ROS,ERK12,,Increase,Increase,0.09991336003357898,yes,in-int
+2,LRP1ag,ROS,PI3K,,Increase,Increase,0.30847757574123447,yes,in-int
+3,LRP1ag,ROS,Akt,,Increase,Increase,0.27491268735080754,yes,in-int
+4,LRP1,"ROS, KD",NFkB,,Decrease,Decrease,-0.20051928658506035,yes,in-int
+5,LRP1ag,ROS,Bax,,Decrease,Decrease,-0.19423606360349593,yes,in-int
+6,LRP1ag,ROS,Bcl2,,Increase,Increase,0.02095799226758699,yes,in-int
+7,LRP1ag,ROS,cas3,,Decrease,Decrease,-0.48885592581277243,yes,in-int
+8,LRP1ag,ROS,apoptosis,,Decrease,Decrease,-0.7516123081167081,yes,in-out
