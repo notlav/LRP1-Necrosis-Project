@@ -1,7 +1,7 @@
-# Create bar plots from validation results
+# Create bar plots from validation results - model vs. experiment
+# for LRP1 paper 
+# updated May 2025
 # author: Lavie
-# date: 7/1/2024
-
 #%% import statements
 import numpy as np 
 from scipy.integrate import solve_ivp
@@ -9,20 +9,20 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 
-import LRP1_upstream as LRP1_ODE
-import LRP1_upstream_params as LRP1_ODE_params
+import LRP1_necrosis_ODEs as model
+import LRP1_necrosis_params as params
 
 #%% run model simulation
 
 # LRP1 low and high conditions
-LRP1_low = 0
+LRP1_low = 0.2 # intermediate
 LRP1_high = 1
 
 # reaction indices for LRP1 and ROS
 idx_LRP1ag = 0
 idx_ROS = 9
 
-[speciesNames, tau, ymax, y0, w, n, EC50] = LRP1_ODE_params.loadParams()
+[speciesIDs, y0, ymax, tau, w, n, EC50] = params.loadParams()
 
 tspan = [0, 50]
 
@@ -31,18 +31,18 @@ w[idx_ROS] = 0.4
 
 # simulate low LRP1ag
 w[idx_LRP1ag] = LRP1_low
-sol_low= solve_ivp(LRP1_ODE.ODEfunc, tspan, y0, args=(tau, ymax, w, n, EC50), t_eval=np.linspace(*tspan, 201))
+sol_low= solve_ivp(model.ODEfunc, tspan, y0, args=(ymax, tau, w, n, EC50), t_eval=np.linspace(*tspan, 201))
 lowLRP1_SS = sol_low.y[:,-1]
 
 # simulate high LRP1
 w[idx_LRP1ag] = LRP1_high
-sol_high = solve_ivp(LRP1_ODE.ODEfunc, tspan, lowLRP1_SS, args=(tau, ymax, w, n, EC50), t_eval=np.linspace(*tspan, 201))
+sol_high = solve_ivp(model.ODEfunc, tspan, lowLRP1_SS, args=(ymax, tau, w, n, EC50), t_eval=np.linspace(*tspan, 201))
 highLRP1_SS = sol_high.y[:,-1]
 
 #%% create dataframes for steady state values for each species
-lowLRP1_df = pd.DataFrame(sol_low.y.T, index = sol_low.t, columns = speciesNames).melt(var_name='species', value_name = 'activity', ignore_index= False).reset_index(names='time')
+lowLRP1_df = pd.DataFrame(sol_low.y.T, index = sol_low.t, columns = speciesIDs).melt(var_name='species', value_name = 'activity', ignore_index= False).reset_index(names='time')
 
-highLRP1_df = pd.DataFrame(sol_high.y.T, index = sol_high.t, columns = speciesNames).melt(var_name='species', value_name = 'activity', ignore_index= False).reset_index(names='time')
+highLRP1_df = pd.DataFrame(sol_high.y.T, index = sol_high.t, columns = speciesIDs).melt(var_name='species', value_name = 'activity', ignore_index= False).reset_index(names='time')
 
 # grab steady state values for each species (time = 50)
 # filter time = 50
