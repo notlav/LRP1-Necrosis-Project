@@ -116,33 +116,89 @@ for i, species in enumerate(validation_species):
 	#plt.savefig('/Volumes/SaucermanLab/Lavie/LRP1/Figures/' + f'{species}_activity.svg')
 
 	plt.show()
+
 # %% manually plot experimental cas3 data
 exp_cas3 = pd.DataFrame({'condition': ['control', 'LRP1\nagonist'], 'activity': [2.05, 0.57]})
 model_cas3 = steady_long[steady_long['species'] == 'cas3']
-
+#
 # plot subplot for exp and model cas3
 fig, axes = plt.subplots(1, 2, figsize = (8, 3),)
 plt.suptitle('caspase 3 activity', fontsize = 16)
 
-color_palette = sns.color_palette('crest', n_colors=8)
+#color_palette = sns.color_palette('crest', n_colors=8)
+
 # model prediction
-sns.barplot(model_cas3, x = 'condition', y = 'activity', width = 0.5, color = color_palette[6], ax = axes[0])
+sns.barplot(model_cas3, x = 'condition', y = 'activity', width = 0.5, color = 'gray', ax = axes[0])
 axes[0].set_xlabel('Model', fontsize = 16)
 axes[0].set_ylabel('activity', fontsize = 12)
 axes[0].set_yticks(np.arange(0, 1.2, 0.2))
 axes[0].set_yticklabels([0.0, 0.2, 0.4, 0.6, 0.8, 1.0])
 
 # experimental cas3 data
-sns.barplot(exp_cas3, x = 'condition', y = 'activity', yerr = [0.495, 0.4], width = 0.5, color = color_palette[6], ax = axes[1])
+sns.barplot(exp_cas3, x = 'condition', y = 'activity', yerr = [0.495, 0.4], width = 0.5, color = 'gray', ax = axes[1])
 axes[1].set_xlabel('Experiment', fontsize = 16)
 axes[1].set_ylabel('-fold increase (vs. sham)', fontsize = 12)
 axes[1].set_yticks(np.arange(0, 3, 0.5))
-axes[1].set_yticklabels([0.0, 0.5, 1.0, 1.5, 2.0, 2.5])
+axes[1].set_yticklabels([0.0, 0.2, 0.4, 0.6, 0.8, 1.0])
 
-# set font name to arial
-plt.show()
 
-plt.savefig('Y:/Lavie/LRP1/Figures/' + 'cas3ValidationBarplot_final.svg', bbox_inches = 'tight')
+#%%  export cas3 figure
+fig.savefig('/Volumes/saucermanlab/Lavie/Papers/Paper1_LRP1/Figures/' + 'cas3ValidationBarplot.svg', bbox_inches = 'tight')
 
+
+# %% side by side for apoptosis
+exp_apoptosis = pd.DataFrame({'condition': ['control', 'LRP1\nagonist'], 'activity': [310.73, 54.83]})
+model_apoptosis = steady_long[steady_long['species'] == 'apoptosis']
+
+
+fig, axes = plt.subplots(1, 2, figsize = (8, 3),)
+plt.suptitle('apoptosis', fontsize = 16)
+
+#color_palette = sns.color_palette('crest', n_colors=8)
+
+# model prediction
+sns.barplot(model_apoptosis, x = 'condition', y = 'activity', width = 0.5, color = 'gray', ax = axes[0])
+axes[0].set_xlabel('Model', fontsize = 16)
+axes[0].set_ylabel('activity', fontsize = 12)
+axes[0].set_yticks(np.arange(0, 1.2, 0.2))
+axes[0].set_yticklabels([0.0, 0.2, 0.4, 0.6, 0.8, 1.0])
+
+sns.barplot(exp_apoptosis, x = 'condition', y = 'activity', yerr = [36.56, 19.3], width = 0.5, color = 'gray', ax = axes[1])
+axes[1].set_xlabel('Experiment', fontsize = 16)
+axes[1].set_ylabel('TUNEL+ %cardiomyocytes', fontsize = 12)
+axes[1].set_yticks(np.arange(0, 351, 70))  
+axes[1].set_yticklabels([f'{x:.1f}' for x in np.arange(0.0, 1.1, 0.2)])  
+
+
+#%%  export apoptosis figure
+fig.savefig('/Volumes/saucermanlab/Lavie/Papers/Paper1_LRP1/Figures/' + 'apoptosisValidationBarplot.svg', bbox_inches = 'tight')
+
+
+#%% side by side for AKT phosphorylation
+
+exp_akt = pd.DataFrame({'condition': ['control', 'LRP1\nagonist'], 'activity': [64.86, 184.31]})
+model_akt = steady_long[steady_long['species'] == 'Akt']
+
+fig, axes = plt.subplots(1, 2, figsize = (8, 3),)
+plt.suptitle('Akt phosphorylation', fontsize = 16)
+
+#color_palette = sns.color_palette('crest', n_colors=8)
+
+# model prediction
+sns.barplot(model_akt, x = 'condition', y = 'activity', width = 0.5, color = 'gray', ax = axes[0])
+axes[0].set_xlabel('Model', fontsize = 16)
+axes[0].set_ylabel('activity', fontsize = 12)
+axes[0].set_yticks(np.arange(0, 1.2, 0.2))
+axes[0].set_yticklabels([0.0, 0.2, 0.4, 0.6, 0.8, 1.0])
+
+sns.barplot(exp_akt, x = 'condition', y = 'activity', yerr = [24.53, 69.61], width = 0.5, color = 'gray', ax = axes[1])
+axes[1].set_xlabel('Experiment', fontsize = 16)
+axes[1].set_ylabel('-fold increase', fontsize = 12)
+axes[1].set_yticks(np.arange(0, 351, 70))  
+axes[1].set_yticklabels([f'{x:.1f}' for x in np.arange(0.0, 1.1, 0.2)])  
+
+
+#%%  export AKT figure
+fig.savefig('/Volumes/saucermanlab/Lavie/Papers/Paper1_LRP1/Figures/' + 'AktValidationBarplot.svg', bbox_inches = 'tight')
 
 # %%
